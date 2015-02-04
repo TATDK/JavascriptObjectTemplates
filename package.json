@@ -1,6 +1,6 @@
 {
     "name": "JavascriptObjectTemplates",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "description": "Templates for Javascript Objects",
     "author": "TAT <TAT@plugCubed.net>",
     "main": "index.js"

@@ -107,6 +107,15 @@ var JavascriptObjectTemplate = function(layout) {
         return true;
     };
 
+    /**
+     * Get the object.
+     *
+     * @returns {Object}
+     */
+    this.getObject = function() {
+        return util._extend({}, data);
+    };
+
     return this;
 };
 
