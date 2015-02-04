@@ -116,6 +116,13 @@ var JavascriptObjectTemplate = function(layout) {
         return util._extend({}, data);
     };
 
+    /**
+     * Reset template back to layout.
+     */
+    this.reset = function() {
+        data = layout;
+    };
+
     return this;
 };
 
