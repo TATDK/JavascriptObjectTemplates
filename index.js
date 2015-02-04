@@ -1,6 +1,5 @@
 var util = require('util');
 
-//noinspection JSUnusedGlobalSymbols
 /**
  * @param layout
  * @returns {JavascriptObjectTemplate}
@@ -12,9 +11,11 @@ var JavascriptObjectTemplate = function(layout) {
     }
 
     var data = util._extend({}, layout);
+    var that = this;
 
-    //noinspection JSUnusedGlobalSymbols
     /**
+     * Get a value.
+     *
      * @param selector
      * @returns {*}
      */
@@ -38,8 +39,9 @@ var JavascriptObjectTemplate = function(layout) {
         return a;
     };
 
-    //noinspection JSUnusedGlobalSymbols
     /**
+     * Set a value.
+     *
      * @param selector
      * @param value
      */
@@ -66,6 +68,40 @@ var JavascriptObjectTemplate = function(layout) {
                 a = a[key[i]];
                 b = b[key[i]];
             }
+        }
+
+        return true;
+    };
+
+    /**
+     * Merge recursively over object
+     *
+     * @param {String[]} key
+     * @param {*} object
+     */
+    function recursiveMerge(key, object) {
+        if (typeof object !== 'object' || util.isArray(object)) {
+            that.set(key.join('.'), object);
+        } else {
+            for (var i in object) {
+                if (!object.hasOwnProperty(i)) continue;
+                recursiveMerge(key.concat([i]), object[i]);
+            }
+        }
+    }
+
+    /**
+     * Set values from object.
+     *
+     * @param {Object} object
+     */
+    this.merge = function(object) {
+        if (typeof object !== 'object' || util.isArray(object))
+            return false;
+
+        for (var i in object) {
+            if (!object.hasOwnProperty(i)) continue;
+            recursiveMerge([i], object[i]);
         }
 
         return true;

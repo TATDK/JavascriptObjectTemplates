@@ -42,3 +42,19 @@ assert.strictEqual(testTemplate.get('multiple'), 'string', 'Template set layout 
 testTemplate.set('object.newField', 'newValue');
 
 assert.strictEqual(testTemplate.get('object.newField'), null, 'Template set non-layout value');
+
+testTemplate.merge({
+    number: 5678,
+    object: {
+        field: 'newFieldValue',
+        newField: 'ignoreThis'
+    },
+    newObject: {
+        ignore: 'this'
+    }
+});
+
+assert.strictEqual(testTemplate.get('number'), 5678, 'Template merge number');
+assert.strictEqual(testTemplate.get('object.field'), 'newFieldValue', 'Template merge object.field');
+assert.strictEqual(testTemplate.get('object.newField'), null, 'Template merge object.newField');
+assert.strictEqual(testTemplate.get('newObject'), null, 'Template merge newObject');
