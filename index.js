@@ -1,3 +1,5 @@
+var util = require('util');
+
 //noinspection JSUnusedGlobalSymbols
 /**
  * @param layout
@@ -9,7 +11,7 @@ var JavascriptObjectTemplate = function(layout) {
         throw new Error('Template is not an object');
     }
 
-    var data = require('util')._extend({} ,layout);
+    var data = util._extend({}, layout);
 
     //noinspection JSUnusedGlobalSymbols
     /**

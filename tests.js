@@ -1,9 +1,7 @@
-//noinspection JSUnusedGlobalSymbols
 var assert = require('assert');
-//noinspection JSUnusedGlobalSymbols
+var util = require('util');
 var JavascriptObjectTemplate = require('./index');
 
-//noinspection JSUnusedGlobalSymbols
 var testTemplate = new JavascriptObjectTemplate({
     number: 1234,
     string: 'string',
@@ -20,8 +18,7 @@ assert.notEqual(testTemplate, null, 'Template is null');
 assert.strictEqual(testTemplate.get('number'), 1234, 'Template get number');
 assert.strictEqual(testTemplate.get('string'), 'string', 'Template get string');
 assert.strictEqual(testTemplate.get('boolean'), true, 'Template get boolean');
-assert.strictEqual(typeof testTemplate.get('array'), 'object', 'Template get array type');
-assert.strictEqual(testTemplate.get('array').length, 0, 'Template get array length');
+assert.strictEqual(util.isArray(testTemplate.get('array')), true, 'Template get array');
 assert.strictEqual(testTemplate.get('object.field'), 'value', 'Template get object');
 
 testTemplate.set('object.field', 'newValue');
