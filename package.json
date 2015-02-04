@@ -1,0 +1,7 @@
+{
+    "name": "JavascriptObjectTemplates",
+    "version": "0.1.0",
+    "description": "Make templates for Javascript Objects",
+    "author": "TAT <TAT@plugCubed.net>",
+    "main": "index.js"
+}
