@@ -21,7 +21,7 @@ var JavascriptObjectTemplate = function(layout) {
      */
     this.get = function(selector) {
         if (typeof selector !== 'string') {
-            return null;
+            return undefined;
         }
 
         var a = data;
@@ -31,7 +31,7 @@ var JavascriptObjectTemplate = function(layout) {
         for (var i in key) {
             if (!key.hasOwnProperty(i)) continue;
             if (a[key[i]] == null) {
-                return null;
+                return undefined;
             }
             a = a[key[i]];
         }
