@@ -26,14 +26,18 @@ var JavascriptObjectTemplate = function(layout) {
 
         var a = data;
 
-        var key = selector.split('.');
+        var key = selector.split('.'), keyParts = key.length;
 
-        for (var i in key) {
-            if (!key.hasOwnProperty(i)) continue;
-            if (a[key[i]] == null) {
+        for (var i = 0; i < keyParts; i++) {
+            if (a[key[i]] === undefined || a[key[i]] === undefined) {
                 return undefined;
             }
-            a = a[key[i]];
+
+            if (i == keyParts - 1) {
+                return a[key[i]];
+            } else {
+                a = a[key[i]];
+            }
         }
 
         return a;
@@ -56,7 +60,7 @@ var JavascriptObjectTemplate = function(layout) {
         var key = selector.split('.'), keyParts = key.length;
 
         for (var i = 0; i < keyParts; i++) {
-            if (a[key[i]] === undefined || a[key[i]] === undefined) {
+            if (a[key[i]] === undefined || b[key[i]] === undefined) {
                 return false;
             }
 

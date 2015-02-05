@@ -41,7 +41,7 @@ assert.strictEqual(testTemplate.get('multiple'), 'string', 'Template set layout 
 
 testTemplate.set('object.newField', 'newValue');
 
-assert.strictEqual(testTemplate.get('object.newField'), null, 'Template set non-layout value');
+assert.strictEqual(testTemplate.get('object.newField'), undefined, 'Template set non-layout value');
 
 testTemplate.merge({
     number: 5678,
@@ -56,5 +56,5 @@ testTemplate.merge({
 
 assert.strictEqual(testTemplate.get('number'), 5678, 'Template merge number');
 assert.strictEqual(testTemplate.get('object.field'), 'newFieldValue', 'Template merge object.field');
-assert.strictEqual(testTemplate.get('object.newField'), null, 'Template merge object.newField');
-assert.strictEqual(testTemplate.get('newObject'), null, 'Template merge newObject');
+assert.strictEqual(testTemplate.get('object.newField'), undefined, 'Template merge object.newField');
+assert.strictEqual(testTemplate.get('newObject'), undefined, 'Template merge newObject');
