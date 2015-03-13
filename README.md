@@ -6,7 +6,7 @@ Create a template using a layout object describing the type and default value.
 If the default value is null, then the field can be of any type.
 
 ```javascript
-var JOT = require('JavascriptObjectTemplates');
+var JOT = require('javascript-object-templates');
 
 // Create new template
 var template = new JOT({
