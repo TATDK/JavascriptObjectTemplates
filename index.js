@@ -127,6 +127,18 @@ var JavascriptObjectTemplate = function(layout) {
         data = layout;
     };
 
+    /**
+     * Clone object template
+     * @returns {JavascriptObjectTemplate}
+     */
+    this.clone = function() {
+        var clone = new JavascriptObjectTemplate(layout);
+
+        clone.merge(data);
+
+        return clone;
+    };
+
     return this;
 };
 

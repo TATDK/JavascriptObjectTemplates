@@ -58,3 +58,6 @@ assert.strictEqual(testTemplate.get('number'), 5678, 'Template merge number');
 assert.strictEqual(testTemplate.get('object.field'), 'newFieldValue', 'Template merge object.field');
 assert.strictEqual(testTemplate.get('object.newField'), undefined, 'Template merge object.newField');
 assert.strictEqual(testTemplate.get('newObject'), undefined, 'Template merge newObject');
+
+assert.notStrictEqual(testTemplate, testTemplate.clone(), 'Template clone');
+assert.deepEqual(testTemplate.getObject(), testTemplate.clone().getObject(), 'Template clone getObject');
